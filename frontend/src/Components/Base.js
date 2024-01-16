@@ -26,21 +26,6 @@ const Base = () => {
     }
   });
 
-  const refreshAuthLogic = (failedRequest) => {
-    const refreshToken = localStorage.getItem('refreshToken');
-  
-    return axios.post('your_refresh_token_endpoint', { refresh: refreshToken })
-      .then((tokenRefreshResponse) => {
-        localStorage.setItem('accessToken', tokenRefreshResponse.data.access);
-        failedRequest.response.config.headers['Authorization'] = 'Bearer ' + tokenRefreshResponse.data.access;
-        return Promise.resolve();
-      });
-  };
-  
-  // Instantiate the interceptor (you should do this once in your application)
-  createAuthRefreshInterceptor(axios, refreshAuthLogic);
-  
-
   const handleDecrement = (e) => {
     e.preventDefault()
     if (wordLength > 6) {
@@ -95,6 +80,13 @@ const Base = () => {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('accessToken')
+    localStorage.removeItem('refreshToken')
+    localStorage.removeItem('userId')
+    navigate('/login')
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     if (!site) {
@@ -143,8 +135,11 @@ const Base = () => {
   return (
     <div className='password-generator'>
       <h4 className='header d-flex justify-content-center p-4'>Django <span style={{color:'green'}}>password</span>generator</h4>
+      <div className="logout-container">
+        <button className='logout-button' onClick={handleLogout}>Logout</button>
+      </div>
       <p className='view-all' onClick={() => navigate('viewall')}>View all passwords</p>
-      <form className="form pt-4">
+      <form className="form pt-2">
         <div className='d-flex flex-column justify-content-start'>
           <div className="site d-flex justify-content-space-between align-items-top p-2">
             <h6 style={{marginRight:'15px', marginTop:'18px'}}>Site</h6>
