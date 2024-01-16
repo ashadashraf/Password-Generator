@@ -7,7 +7,7 @@ const ViewAll = () => {
     const [allItems, setAllItems] = useState([]);
     useEffect(() => {
         try {
-            axios.get('https://54.210.227.118/allpasswords', 
+            axios.get('https://www.generatepassword.ashadashraf.com/allpasswords', 
             {
               params: {
                 user_id: userId,

@@ -100,7 +100,7 @@ const Base = () => {
     setSiteError(false);
     
     try {
-      axios.post('https://54.210.227.118/', 
+      axios.post('https://www.generatepassword.ashadashraf.com/', 
       {
         site: site,
         word_length: wordLength,
