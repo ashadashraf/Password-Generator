@@ -100,7 +100,7 @@ const Base = () => {
     setSiteError(false);
     
     try {
-      axios.post('http://54.210.227.118:8000/', 
+      axios.post('https://54.210.227.118:8000/', 
       {
         site: site,
         word_length: wordLength,

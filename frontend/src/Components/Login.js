@@ -20,7 +20,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     
-    const response = await fetch('http://54.210.227.118/api/login/', {
+    const response = await fetch('https://54.210.227.118/api/login/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -54,7 +54,7 @@ const Login = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     
-    const response = await fetch('http://54.210.227.118/api/register/', {
+    const response = await fetch('https://54.210.227.118/api/register/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
